@@ -15,8 +15,8 @@
 				break;
 
 				case 'update':
-				$id = $_GET['id'];
-				updatetheProduct($id);
+				$_SESSION['tempid'] = $_GET['id'];
+				redirect_to('../admin_edittheproduct.php?tempid='.$_GET['id']);
 				break;
 		}
 	}

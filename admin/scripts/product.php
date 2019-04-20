@@ -70,6 +70,25 @@ function addMovie($cover, $name, $price, $description, $genre)
     //var_dump($genre);
 }
 
+function updateProduct($id, $cover, $name, $price, $description){
+    include('connect.php');
+      $update_apparel_query = 'UPDATE tbl_apparel SET apparel_cover=:cover, apparel_name=:apparelname,';
+      $update_apparel_query .=' apparel_price=:price, apparel_description=:desc';
+      $update_apparel_query .=' WHERE apparel_id = :id';
+
+      $update_apparel_set = $pdo->prepare($update_apparel_query);
+      $update_apparel_set->execute(
+          array(
+              ':cover'=>$cover,
+              ':apparelname'=>$name,
+              ':price'=>$price,
+              ':desc'=>$description,
+              ':id'=>$id
+          )
+          );
+          redirect_to('index.php');
+          
+}
 
 function deletetheProduct($id) {
     include('connect.php');
